@@ -1,0 +1,32 @@
+server:
+  port: 9527
+
+  #http://localhost:9527/mxd/mydept/dept/list
+  #http://localhost:9527/mxd/mydept/dept/get/1
+spring:
+  application:
+    name: microcloud-zuul-gateway
+#security:
+ #   user:
+  #    name: zuul
+   #   password: mixiaodong
+zuul:
+  prefix: /mxd    #前缀名
+  ignored-services: "*"
+  routes: 
+    MICROCLOUD-DEPT: /mydept/**   
+   # mydept.serviceId: MICROCLOUD-DEPT
+    #mydept.path: /mydept/**    
+eureka: 
+  client:
+    service-url: 
+      defaultZone: http://mxdEureka:mxdEureka@eureka7001.com:7001/eureka/
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true
+    
+info:
+  app.name: MiXiaoDong-microcloud
+  company.name: www.hdu.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
